@@ -77,6 +77,22 @@ The build.bat script depends on the 'minGW' program-suite (and Python, of course
 
 On windows 7, to access these parameters, go-to 'My Computer(Right-Click)->Properties->'Advanced System Settings'->'Environment Variables'.  Under system variables find 'Path' and 'PATHEXT', and modify the entries as indicated above.
 
+################################
+##### Quick Plot Example #######
+
+Once pyTS is setup properly and a `TurbSim.wnd` file has been created from the default `TurbSim.inp` file, one can create a quick plot of the resulting data with the following script (could just be pasted into python):
+
+```# third-party libraries
+import pylab as pl
+import numpy as np
+
+# local libraries
+import tsread
+
+data = tsread.readBladed('TurbSim.wnd')
+pl.pcolor(data[1,:,:,1])
+pl.show()```
+
 
 ################################
 ##### Customizing pyTurbSim ####
