@@ -59,7 +59,7 @@ subroutine ieccoh(Sij,Sii,f,y,z,uhub,a,Lc,nf,ny,nz)
 !DEC$ ATTRIBUTES REFERENCE :: SIJ,SII,F,Y,Z,UHUB,A,LC,NF,NY,NZ
   implicit none
   real,intent(out)      :: Sij(ny*nz*(ny*nz+1)/2,nf)
-  real,intent(in)       :: Sii(ny*nz,nf),f(nf),y(ny),z(nz),uhub,a,Lc
+  real,intent(inout)       :: Sii(ny*nz,nf),f(nf),y(ny),z(nz),uhub,a,Lc
   integer, intent(in)   :: nf,ny,nz
   integer       :: ind,ii,jj,iz(ny*nz),iy(ny*nz)
   real          :: r
@@ -93,13 +93,13 @@ subroutine nonIECcoh(Sij,Sii,f,y,z,u,coefs,coefExp,nf,ny,nz)
 !DEC$ ATTRIBUTES REFERENCE :: SIJ,SII,F,Y,Z,U,COEFS,COEFEXP,NF,NY,NZ
   implicit none
   real,intent(out)    :: Sij(ny*nz*(ny*nz+1)/2,nf)
-  real,intent(in)     :: Sii(ny*nz,nf),f(nf)
-  real,intent(in)     :: coefs(2),coefExp
+  real,intent(inout)     :: Sii(ny*nz,nf),f(nf)
+  real,intent(inout)     :: coefs(2),coefExp
   real,intent(in)     :: y(ny), z(nz), u(ny*nz)
   integer, intent(in) :: nf, ny, nz
   integer             :: ii, jj, ind, np
   integer             :: iy(ny*nz), iz(ny*nz)
-  real                :: r2, um, zm
+  real                :: r, um, zm
   np=ny*nz
 
   DO ii=1,np
