@@ -1,5 +1,6 @@
 import numpy as np
 from struct import pack,unpack
+from pyts.tsio import convname,e
 ts_float=np.float32
 
 
